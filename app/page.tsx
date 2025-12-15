@@ -1,8 +1,37 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 
 export default function Home() {
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (isSubmitting) return
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...contactForm, formType: 'contact' })
+      })
+
+      if (response.ok) {
+        alert('Message sent successfully! We\'ll get back to you soon.')
+        setContactForm({ name: '', email: '', message: '' })
+      } else {
+        throw new Error('Failed to send')
+      }
+    } catch (error) {
+      alert('Failed to send message. Please call us directly at (844) 950-1936')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <main style={{ width: '100%' }}>
       {/* Header */}
@@ -428,14 +457,17 @@ export default function Home() {
             </div>
 
             <div style={{ flex: '2 1 300px', minWidth: '300px' }}>
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div>
                   <label style={{ display: 'block', color: '#374151', fontWeight: 600, marginBottom: '0.5rem' }}>
                     Name
                   </label>
                   <input
                     type="text"
+                    required
                     placeholder="Your name"
+                    value={contactForm.name}
+                    onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -452,7 +484,10 @@ export default function Home() {
                   </label>
                   <input
                     type="email"
+                    required
                     placeholder="Your email"
+                    value={contactForm.email}
+                    onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -468,8 +503,11 @@ export default function Home() {
                     Message
                   </label>
                   <textarea
+                    required
                     placeholder="Your message"
                     rows={5}
+                    value={contactForm.message}
+                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
@@ -483,18 +521,19 @@ export default function Home() {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   style={{
                     alignSelf: 'flex-start',
-                    backgroundColor: '#2d7a87',
+                    backgroundColor: isSubmitting ? '#9ca3af' : '#2d7a87',
                     color: 'white',
                     padding: '0.75rem 2rem',
                     borderRadius: '9999px',
                     border: 'none',
                     fontWeight: 600,
-                    cursor: 'pointer'
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer'
                   }}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
