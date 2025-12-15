@@ -674,7 +674,7 @@ export default function QuizPage() {
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '300px', margin: '0 auto' }}>
                   <a
-                    href="tel:8443876889"
+                    href="tel:+18449501936"
                     style={{
                       padding: '1rem 2rem',
                       backgroundColor: '#2d7a87',
@@ -685,7 +685,7 @@ export default function QuizPage() {
                       textAlign: 'center'
                     }}
                   >
-                    Call Now: (844) 387-6889
+                    Call Now: (844) 950-1936
                   </a>
                   <a
                     href="/"

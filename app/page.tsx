@@ -48,7 +48,7 @@ export default function Home() {
             }}>
               Get Help
             </a>
-            <a href="tel:8443876889" style={{
+            <a href="tel:+18449501936" style={{
               backgroundColor: 'transparent',
               color: 'white',
               padding: '0.5rem 1.5rem',
@@ -106,7 +106,7 @@ export default function Home() {
               lineHeight: 1.6,
               marginBottom: '2rem'
             }}>
-              Start Living Life the way you love with our California substance abuse treatment facility
+              Start Living Life the way you love with our substance abuse treatment facility
             </p>
             <a href="/quiz" style={{
               display: 'inline-block',
@@ -178,14 +178,14 @@ export default function Home() {
                 }}>
                   Contact Us
                 </a>
-                <a href="tel:8443876889" style={{
+                <a href="tel:+18449501936" style={{
                   border: '2px solid #2d7a87',
                   color: '#2d7a87',
                   padding: '0.75rem 1.5rem',
                   borderRadius: '9999px',
                   fontWeight: 600
                 }}>
-                  (844) 387-6889
+                  (844) 950-1936
                 </a>
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function Home() {
                 Our Facilities
               </h3>
               <p style={{ color: '#374151', lineHeight: 1.8 }}>
-                Forward Recovery is tucked away in an upscale neighborhood on the west side of Los Angeles. We&apos;re close to hip hangouts while offering you a peaceful getaway to focus on your recovery.
+                Forward Recovery offers a peaceful environment to focus on your recovery. Our modern facilities provide a comfortable setting where you can heal and grow.
               </p>
             </div>
 
@@ -411,8 +411,8 @@ export default function Home() {
                 <h4 style={{ color: '#2d7a87', fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
                   Our Phone
                 </h4>
-                <a href="tel:8443876889" style={{ color: '#374151', fontSize: '1.125rem' }}>
-                  (844) 387-6889
+                <a href="tel:+18449501936" style={{ color: '#374151', fontSize: '1.125rem' }}>
+                  (844) 950-1936
                 </a>
               </div>
 
@@ -425,21 +425,6 @@ export default function Home() {
                 </a>
               </div>
 
-              <div>
-                <h4 style={{ color: '#2d7a87', fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                  Our Locations
-                </h4>
-                <p style={{ color: '#374151', marginBottom: '1rem' }}>
-                  <strong>9740 West Pico Boulevard</strong><br />
-                  Los Angeles CA 90035<br />
-                  <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>Outpatient Detox/IOP/OP</span>
-                </p>
-                <p style={{ color: '#374151' }}>
-                  <strong>1428 S Roxbury Dr</strong><br />
-                  Los Angeles, CA 90035<br />
-                  <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>Detox/Residential</span>
-                </p>
-              </div>
             </div>
 
             <div style={{ flex: '2 1 300px', minWidth: '300px' }}>
@@ -536,28 +521,16 @@ export default function Home() {
                 style={{ marginBottom: '1rem' }}
               />
               <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
-                California&apos;s premier substance abuse treatment facility, helping you find your path to recovery.
+                Premier substance abuse treatment facility, helping you find your path to recovery.
               </p>
             </div>
 
-            {/* Locations */}
-            <div>
-              <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Our Locations</h4>
-              <p style={{ marginBottom: '1rem' }}>
-                <strong>9740 West Pico Blvd</strong><br />
-                Los Angeles CA 90035
-              </p>
-              <p>
-                <strong>1428 S Roxbury Dr</strong><br />
-                Los Angeles, CA 90035
-              </p>
-            </div>
 
             {/* Contact */}
             <div>
               <h4 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>Contact Us</h4>
-              <a href="tel:8443876889" style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold', display: 'block', marginBottom: '1rem' }}>
-                (844) 387-6889
+              <a href="tel:+18449501936" style={{ color: 'white', fontSize: '1.5rem', fontWeight: 'bold', display: 'block', marginBottom: '1rem' }}>
+                (844) 950-1936
               </a>
               <a href="mailto:info@forwardrecovery.com" style={{ color: 'white' }}>
                 info@forwardrecovery.com
