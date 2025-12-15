@@ -119,8 +119,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, message: 'Assessment submitted successfully' });
   } catch (error) {
     console.error('Error submitting to Google Sheets:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { success: false, message: 'Failed to submit assessment' },
+      { success: false, message: 'Failed to submit assessment', error: errorMessage },
       { status: 500 }
     );
   }
