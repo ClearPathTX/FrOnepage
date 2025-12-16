@@ -211,6 +211,17 @@ export default function QuizPage() {
       background: 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)',
       padding: '2rem 1rem'
     }}>
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .quiz-card { padding: 1.5rem !important; }
+          .quiz-headline { font-size: 1.75rem !important; }
+          .quiz-question { font-size: 1.25rem !important; }
+          .quiz-button { padding: 0.875rem 1.25rem !important; font-size: 0.95rem !important; }
+          .quiz-option { padding: 1rem !important; font-size: 0.95rem !important; }
+          .quiz-input { padding: 0.75rem !important; font-size: 1rem !important; }
+        }
+      `}</style>
+
       {/* Header */}
       <div style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '2rem' }}>
         <a href="/" style={{ display: 'inline-block' }}>
@@ -262,6 +273,7 @@ export default function QuizPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
+            className="quiz-card"
             style={{
               backgroundColor: 'white',
               borderRadius: '1rem',
@@ -272,7 +284,7 @@ export default function QuizPage() {
             {/* Intro Step */}
             {step.type === 'intro' && (
               <div style={{ textAlign: 'center' }}>
-                <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1rem' }}>
+                <h1 className="quiz-headline" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '1rem' }}>
                   {step.headline}
                 </h1>
                 <p style={{ fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem', lineHeight: 1.6 }}>
@@ -280,6 +292,7 @@ export default function QuizPage() {
                 </p>
                 <button
                   onClick={handleNext}
+                  className="quiz-button"
                   style={{
                     padding: '1rem 2.5rem',
                     backgroundColor: '#2d7a87',
@@ -299,7 +312,7 @@ export default function QuizPage() {
             {/* Single Choice */}
             {step.type === 'single-choice' && step.options && step.key && (
               <div>
-                <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '2rem' }}>
+                <h2 className="quiz-question" style={{ fontSize: '1.75rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '2rem' }}>
                   {step.question}
                 </h2>
                 <div style={{
@@ -312,6 +325,7 @@ export default function QuizPage() {
                     <button
                       key={option}
                       onClick={() => handleAnswer(step.key!, option)}
+                      className="quiz-option"
                       style={{
                         padding: '1rem',
                         borderRadius: '0.75rem',
@@ -331,6 +345,7 @@ export default function QuizPage() {
                 <button
                   onClick={handleNext}
                   disabled={!(answers as Record<string, unknown>)[step.key!]}
+                  className="quiz-button"
                   style={{
                     width: '100%',
                     padding: '1rem',
@@ -414,6 +429,7 @@ export default function QuizPage() {
                   placeholder={step.placeholder}
                   value={(answers as Record<string, unknown>)[step.key] as string || ''}
                   onChange={(e) => handleAnswer(step.key!, e.target.value)}
+                  className="quiz-input"
                   style={{
                     width: '100%',
                     padding: '1rem',
@@ -587,6 +603,7 @@ export default function QuizPage() {
                     placeholder="Full name"
                     value={answers.fullName}
                     onChange={(e) => handleAnswer('fullName', e.target.value)}
+                    className="quiz-input"
                     style={{
                       width: '100%',
                       padding: '1rem',
@@ -600,6 +617,7 @@ export default function QuizPage() {
                     placeholder="Phone"
                     value={answers.phone}
                     onChange={(e) => handleAnswer('phone', e.target.value)}
+                    className="quiz-input"
                     style={{
                       width: '100%',
                       padding: '1rem',
@@ -613,6 +631,7 @@ export default function QuizPage() {
                     placeholder="Email"
                     value={answers.email}
                     onChange={(e) => handleAnswer('email', e.target.value)}
+                    className="quiz-input"
                     style={{
                       width: '100%',
                       padding: '1rem',

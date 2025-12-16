@@ -6,6 +6,7 @@ import Image from 'next/image'
 export default function Home() {
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,6 +35,22 @@ export default function Home() {
 
   return (
     <main style={{ width: '100%' }}>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .desktop-buttons { display: none !important; }
+          .mobile-menu-button { display: block !important; }
+          .hero-title { font-size: 2rem !important; }
+          .hero-subtitle { font-size: 1.125rem !important; }
+          .section-title { font-size: 1.875rem !important; }
+          .logo-img { width: 48px !important; height: 48px !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-menu-button { display: none !important; }
+          .mobile-menu { display: none !important; }
+        }
+      `}</style>
+
       {/* Header */}
       <header style={{
         width: '100%',
@@ -57,17 +74,22 @@ export default function Home() {
               alt="Forward Recovery Logo"
               width={64}
               height={64}
+              className="logo-img"
               style={{ width: '64px', height: '64px' }}
               priority
             />
           </a>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+
+          {/* Desktop Navigation */}
+          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <a href="#about" style={{ color: 'white', fontWeight: 600 }}>About</a>
             <a href="#services" style={{ color: 'white', fontWeight: 600 }}>Services</a>
             <a href="#facilities" style={{ color: 'white', fontWeight: 600 }}>Facilities</a>
             <a href="#contact" style={{ color: 'white', fontWeight: 600 }}>Contact</a>
           </nav>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+
+          {/* Desktop Buttons */}
+          <div className="desktop-buttons" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <a href="/quiz" style={{
               backgroundColor: 'white',
               color: '#2d7a87',
@@ -88,7 +110,62 @@ export default function Home() {
               Call Now
             </a>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="mobile-menu-button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: 'none',
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="mobile-menu" style={{
+            backgroundColor: '#2d7a87',
+            padding: '1rem 1.5rem',
+            borderTop: '1px solid rgba(255,255,255,0.2)'
+          }}>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <a href="#about" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontWeight: 600, padding: '0.5rem 0' }}>About</a>
+              <a href="#services" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontWeight: 600, padding: '0.5rem 0' }}>Services</a>
+              <a href="#facilities" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontWeight: 600, padding: '0.5rem 0' }}>Facilities</a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={{ color: 'white', fontWeight: 600, padding: '0.5rem 0' }}>Contact</a>
+              <a href="/quiz" onClick={() => setMobileMenuOpen(false)} style={{
+                backgroundColor: 'white',
+                color: '#2d7a87',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                textAlign: 'center',
+                marginTop: '0.5rem'
+              }}>
+                Get Help
+              </a>
+              <a href="tel:+18449501936" onClick={() => setMobileMenuOpen(false)} style={{
+                backgroundColor: 'transparent',
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                border: '2px solid white',
+                textAlign: 'center'
+              }}>
+                Call Now
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
@@ -121,7 +198,7 @@ export default function Home() {
           padding: '0 1.5rem'
         }}>
           <div style={{ textAlign: 'center', maxWidth: '48rem' }}>
-            <h1 style={{
+            <h1 className="hero-title" style={{
               color: 'white',
               fontSize: '3.5rem',
               fontWeight: 'bold',
@@ -129,7 +206,7 @@ export default function Home() {
             }}>
               Forward Recovery
             </h1>
-            <p style={{
+            <p className="hero-subtitle" style={{
               color: 'white',
               fontSize: '1.5rem',
               lineHeight: 1.6,
@@ -156,7 +233,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" style={{ backgroundColor: 'white', padding: '5rem 1.5rem' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
-          <h2 style={{
+          <h2 className="section-title" style={{
             color: '#2d7a87',
             fontSize: '2.5rem',
             fontWeight: 'bold',
@@ -225,7 +302,7 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" style={{ backgroundColor: '#f3f4f6', padding: '5rem 1.5rem' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
-          <h2 style={{
+          <h2 className="section-title" style={{
             color: '#2d7a87',
             fontSize: '2.5rem',
             fontWeight: 'bold',
@@ -299,7 +376,7 @@ export default function Home() {
       {/* Insurance Section */}
       <section style={{ backgroundColor: 'white', padding: '5rem 1.5rem' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{
+          <h2 className="section-title" style={{
             color: '#2d7a87',
             fontSize: '2.5rem',
             fontWeight: 'bold',
@@ -340,7 +417,7 @@ export default function Home() {
           }}>
             Facilities
           </h2>
-          <h3 style={{
+          <h3 className="section-title" style={{
             color: 'white',
             fontSize: '2.5rem',
             fontWeight: 'bold',
@@ -424,7 +501,7 @@ export default function Home() {
           <p style={{ color: '#6b7280', fontSize: '1.125rem', textAlign: 'center', marginBottom: '0.5rem' }}>
             Talk to Us
           </p>
-          <h2 style={{
+          <h2 className="section-title" style={{
             color: '#2d7a87',
             fontSize: '2.5rem',
             fontWeight: 'bold',
